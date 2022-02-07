@@ -34,11 +34,7 @@ RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python3 get-pip.py && \
         (cd /usr/local/lib/python3.6/dist-packages/scipy/.libs; rm *; ln ../../numpy/.libs/* .) && \
         rm -rf /root/.cache
 
-RUN git clone https://github.com/anuj509/PDPbox.git
-
-WORKDIR PDPbox
-
-RUN setup -e .
+RUN git clone https://github.com/anuj509/PDPbox.git && cd PDPbox && setup -e .
 
 COPY lib /opt/program
 WORKDIR /opt/program/lib
