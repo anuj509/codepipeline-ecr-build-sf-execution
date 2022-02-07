@@ -7,6 +7,7 @@
 from __future__ import print_function
 
 import os
+from os import walk
 import json
 import pickle
 import sys
@@ -84,7 +85,8 @@ def train():
         y_train.to_csv(input_path+"test_iris-y.csv",index=False)
 
         print("done saving data split for XAI")
-
+        print(os.getcwd())
+        print(next(walk(input_path), (None, None, []))[2])
         print("Generating XAI reports")
         generate_report('xparams.yaml')
         # run_whatif_explanation('xparams.yaml')
