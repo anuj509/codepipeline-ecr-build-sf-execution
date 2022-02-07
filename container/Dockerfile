@@ -10,6 +10,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
          python \
          nginx \
          ca-certificates \
+         git \
     && rm -rf /var/lib/apt/lists/*
 
 # Here we get all python packages.
@@ -21,6 +22,12 @@ RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py && \
     pip install -r requirements_cloud.txt && \
         (cd /usr/local/lib/python2.7/dist-packages/scipy/.libs; rm *; ln ../../numpy/.libs/* .) && \
         rm -rf /root/.cache
+
+RUN git clone https://github.com/anuj509/PDPbox.git
+
+WORKDIR PDPbox
+
+RUN setup -e .
 
 COPY lib /opt/program
 WORKDIR /opt/program/lib
