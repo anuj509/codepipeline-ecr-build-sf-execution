@@ -32,7 +32,7 @@ WORKDIR /opt/program
 RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python3 get-pip.py && \
     pip3 --no-cache-dir install -r requirements.txt
 
-RUN git clone https://github.com/anuj509/PDPbox.git && cd PDPbox && python setup.py -e .
+RUN git clone https://github.com/anuj509/PDPbox.git && cd PDPbox && python3 setup.py -e .
 
 COPY lib /opt/program
 WORKDIR /opt/program/lib
