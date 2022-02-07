@@ -26,10 +26,7 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 2 
 
 
 COPY requirements_cloud.txt /opt/program/requirements.txt
-COPY python_ubuntu_docker.sh /opt/program/python_ubuntu_docker.sh
 WORKDIR /opt/program
-RUN chmod +x python_ubuntu_docker.sh
-RUN ./python_ubuntu_docker.sh
 
 RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python3 get-pip.py && \
     pip3 install -r requirements.txt && \
