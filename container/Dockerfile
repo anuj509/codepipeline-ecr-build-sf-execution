@@ -18,8 +18,11 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 # linking them together. Likewise, pip leaves the install caches populated which uses
 # a significant amount of space. These optimizations save a fair amount of space in the
 # image, which reduces start up time.
+COPY requirements_cloud.txt /opt/program/requirements.txt
+WORKDIR /opt/program
+
 RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py && \
-    pip install -r requirements_cloud.txt && \
+    pip install -r requirements.txt && \
         (cd /usr/local/lib/python2.7/dist-packages/scipy/.libs; rm *; ln ../../numpy/.libs/* .) && \
         rm -rf /root/.cache
 
