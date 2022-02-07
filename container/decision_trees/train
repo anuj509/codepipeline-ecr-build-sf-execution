@@ -73,7 +73,7 @@ def train():
 
         print("saving data split for XAI")
 
-        x.to_csv(input_path+"iris-x.csv",index=False)
+        X.to_csv(input_path+"iris-x.csv",index=False)
         y.to_csv(input_path+"iris-y.csv",index=False)
         X_train.to_csv(input_path+"train_iris-x.csv",index=False)
         y_train.to_csv(input_path+"train_iris-y.csv",index=False)
