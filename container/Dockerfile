@@ -21,9 +21,9 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 
 
 COPY requirements_cloud.txt /opt/program/requirements.txt
-COPY python_ubuntu_dockker.sh /opt/program/python_ubuntu_dockker.sh
+COPY python_ubuntu_docker.sh /opt/program/python_ubuntu_docker.sh
 WORKDIR /opt/program
-RUN chmod +x python_ubuntu_dockker.sh
+RUN chmod +x python_ubuntu_docker.sh
 
 RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python get-pip.py && \
     pip install -r requirements.txt && \
