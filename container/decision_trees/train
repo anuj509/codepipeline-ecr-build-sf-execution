@@ -18,6 +18,9 @@ from sklearn import tree
 
 from sklearn.model_selection import train_test_split
 
+import untangleai # custom package
+from untangleai.generate_report import generate_report
+
 # These are the paths to where SageMaker mounts interesting things in your container.
 
 prefix = '/opt/ml/'
@@ -81,6 +84,10 @@ def train():
         y_train.to_csv(input_path+"test_iris-y.csv",index=False)
 
         print("done saving data split for XAI")
+
+        print("Generating XAI reports")
+        generate_report('xparams.yaml')
+        # run_whatif_explanation('xparams.yaml')
 
         
 
