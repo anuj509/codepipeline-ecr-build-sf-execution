@@ -18,7 +18,6 @@ RUN apt-get update
 RUN apt-get install -y python3-pip \
     && apt-get clean \
     && python3 -m pip install --upgrade pip && \
-    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 2 && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1 && \
     rm /usr/bin/python3 && \
     ln -s python3.6 /usr/bin/python3
