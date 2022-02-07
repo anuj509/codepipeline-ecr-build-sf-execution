@@ -21,9 +21,9 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 COPY requirements_cloud.txt /opt/program/requirements.txt
 WORKDIR /opt/program
 
-RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py && \
+RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python get-pip.py && \
     pip install -r requirements.txt && \
-        (cd /usr/local/lib/python2.7/dist-packages/scipy/.libs; rm *; ln ../../numpy/.libs/* .) && \
+        (cd /usr/local/lib/python3.6/dist-packages/scipy/.libs; rm *; ln ../../numpy/.libs/* .) && \
         rm -rf /root/.cache
 
 RUN git clone https://github.com/anuj509/PDPbox.git
