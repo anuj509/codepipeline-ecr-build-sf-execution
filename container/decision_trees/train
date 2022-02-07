@@ -54,7 +54,7 @@ def train():
         y = train_data.ix[:,0]
         X = train_data.ix[:,1:]
 
-        X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
 
         # Here we only support a single hyperparameter. Note that hyperparameters are always passed in as
         # strings, so we need to do any necessary conversions.
