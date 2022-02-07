@@ -3,7 +3,7 @@
 # for serving inferences in a stable way.
 
 FROM public.ecr.aws/lts/ubuntu:20.04
-DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
          wget \
