@@ -30,9 +30,7 @@ COPY requirements_cloud.txt /opt/program/requirements.txt
 WORKDIR /opt/program
 
 RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python3 get-pip.py && \
-    pip3 install -r requirements.txt && \
-        (cd /usr/local/lib/python3.6/dist-packages/scipy/.libs; rm *; ln ../../numpy/.libs/* .) && \
-        rm -rf /root/.cache
+    pip3 --no-cache-dir install -r requirements.txt
 
 RUN git clone https://github.com/anuj509/PDPbox.git && cd PDPbox && setup -e .
 
