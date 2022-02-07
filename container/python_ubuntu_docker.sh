@@ -1,3 +1,4 @@
+#!/bin/sh
 sudo apt-get install software-properties-common
 
 sudo add-apt-repository ppa:jonathonf/python-3.6
