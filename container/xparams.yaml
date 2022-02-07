@@ -1,0 +1,73 @@
+base:
+  project : xai-project
+  random_state : 42
+
+# CLASSIFICATION
+data_source:
+  X : /opt/ml/input/data/iris-x.csv
+  y : /opt/ml/input/data/iris-y.csv
+  X_train : /opt/ml/input/data/train_iris-x.csv
+  y_train : /opt/ml/input/data/train_iris-y.csv
+  X_test :  /opt/ml/input/data/test_iris-x.csv
+  y_test : /opt/ml/input/data/test_iris-y.csv
+
+estimators:
+  models : /opt/ml/model/decision-tree-model.pkl
+  algorithm : "DecisionTreeClassifier"
+  mode : 'classification'
+  class_names : ['setosa','versicolor','virginica']
+
+# REGRESSION
+# data_source:
+#   X : ../data/reg_X.csv
+#   y : ../data/reg_Y.csv
+#   X_train : ../data/reg_train_X.csv
+#   y_train : ../data/reg_train_y.csv
+#   X_test : ../data/reg_test_X.csv
+#   y_test : ../data/reg_test_y.csv
+
+# estimators:
+#   models : ../model/reg_xgb_model.pkl
+#   algorithm : "XGBoost"
+#   mode : 'regression'
+#   class_names : ['HousePrice']
+
+row_index_to_explain : [0,1,5,9] #List as well
+
+target_class : 0
+
+# MULTICLASS CLASSIFICATION
+# data_source:
+#   X : ../data/multi_X.csv
+#   y : ../data/multi_y.csv
+#   X_train : ../data/multi_X_train.csv
+#   y_train : ../data/multi_y_train.csv
+#   X_test : ../data/multi_X_test.csv
+#   y_test : ../data/multi_y_test.csv
+
+# estimators:
+#   models : ../model/multiclass_rf_model.pkl
+#   algorithm : "RandomForest"
+#   mode : 'classification'
+#   class_names : ['Setosa', 'Versicolor', 'Virginica']
+
+reports:
+  global : ./reports/global
+  local : ./reports/local
+
+experiments:
+  estimators_1:
+    models : /opt/ml/model/decision-tree-model.pkl
+    algorithm : "DecisionTreeClassifier"
+    mode : 'classification'
+    class_names : ['setosa','versicolor','virginica']
+  estimators_2:
+    models : /opt/ml/model/decision-tree-model.pkl
+    algorithm : "DecisionTreeClassifier"
+    mode : 'classification'
+    class_names : ['setosa','versicolor','virginica']
+
+graphs:
+  permutation importance : True
+  partial dependency plot : True
+  shapley feature importance : True

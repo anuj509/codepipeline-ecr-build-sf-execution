@@ -16,6 +16,8 @@ import pandas as pd
 
 from sklearn import tree
 
+from sklearn.model_selection import train_test_split
+
 # These are the paths to where SageMaker mounts interesting things in your container.
 
 prefix = '/opt/ml/'
@@ -49,8 +51,10 @@ def train():
         train_data = pd.concat(raw_data)
 
         # labels are in the first column
-        train_y = train_data.ix[:,0]
-        train_X = train_data.ix[:,1:]
+        y = train_data.ix[:,0]
+        X = train_data.ix[:,1:]
+
+        X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=42)
 
         # Here we only support a single hyperparameter. Note that hyperparameters are always passed in as
         # strings, so we need to do any necessary conversions.
@@ -60,12 +64,26 @@ def train():
 
         # Now use scikit-learn's decision tree classifier to train the model.
         clf = tree.DecisionTreeClassifier(max_leaf_nodes=max_leaf_nodes)
-        clf = clf.fit(train_X, train_y)
+        clf = clf.fit(X_train, y_train)
 
         # save the model
         with open(os.path.join(model_path, 'decision-tree-model.pkl'), 'w') as out:
             pickle.dump(clf, out)
         print('Training complete.')
+
+        print("saving data split for XAI")
+
+        x.to_csv(input_path+"iris-x.csv",index=False)
+        y.to_csv(input_path+"iris-y.csv",index=False)
+        X_train.to_csv(input_path+"train_iris-x.csv",index=False)
+        y_train.to_csv(input_path+"train_iris-y.csv",index=False)
+        X_test.to_csv(input_path+"test_iris-x.csv",index=False)
+        y_train.to_csv(input_path+"test_iris-y.csv",index=False)
+
+        print("done saving data split for XAI")
+
+        
+
     except Exception as e:
         # Write out an error file. This will be returned as the failureReason in the
         # DescribeTrainingJob result.
