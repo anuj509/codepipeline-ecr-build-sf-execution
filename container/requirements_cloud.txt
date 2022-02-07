@@ -1,3 +1,4 @@
+numpy==1.20.3
 openpyxl==2.6.4
 PyPDF2==1.26.0
 pytz==2021.1
@@ -10,8 +11,7 @@ dash==1.19.0
 eli5==0.11.0
 kneed==0.7.0
 lime==0.2.0.1
-numpy==1.20.3
-scipy==1.2.1 
+scipy==1.7.1
 scikit-learn==1.0.1
 pandas==1.0.5
 Flask==2.0.2
