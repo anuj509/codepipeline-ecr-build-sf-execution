@@ -18,8 +18,12 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 # linking them together. Likewise, pip leaves the install caches populated which uses
 # a significant amount of space. These optimizations save a fair amount of space in the
 # image, which reduces start up time.
+
+
 COPY requirements_cloud.txt /opt/program/requirements.txt
+COPY python_ubuntu_dockker.sh /opt/program/python_ubuntu_dockker.sh
 WORKDIR /opt/program
+RUN chmod +x python_ubuntu_dockker.sh
 
 RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python get-pip.py && \
     pip install -r requirements.txt && \
