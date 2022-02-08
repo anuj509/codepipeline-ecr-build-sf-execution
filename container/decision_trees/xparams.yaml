@@ -13,7 +13,7 @@ data_source:
 
 estimators:
   models : /opt/ml/model/random-forest-model.pkl
-  algorithm : "DecisionTreeClassifier"
+  algorithm : "RandomForest"
   mode : 'classification'
   class_names : ['setosa','versicolor','virginica']
 
@@ -58,12 +58,12 @@ reports:
 experiments:
   estimators_1:
     models : /opt/ml/model/random-forest-model.pkl
-    algorithm : "DecisionTreeClassifier"
+    algorithm : "RandomForest"
     mode : 'classification'
     class_names : ['setosa','versicolor','virginica']
   estimators_2:
     models : /opt/ml/model/random-forest-model.pkl
-    algorithm : "DecisionTreeClassifier"
+    algorithm : "RandomForest"
     mode : 'classification'
     class_names : ['setosa','versicolor','virginica']
 
