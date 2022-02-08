@@ -87,14 +87,14 @@ def train():
 
         print("done saving data split for XAI")
         print(os.getcwd())
-        fname = []
-        for root,d_names,f_names in os.walk("/tmp/reports"):
-            for f in f_names:
-                fname.append(os.path.join(root, f))
+        # fname = []
+        # for root,d_names,f_names in os.walk("."):
+        #     for f in f_names:
+        #         fname.append(os.path.join(root, f))
 
-        print("fname = %s" %fname)
-        print("Generating XAI reports")
-        generate_report('xparams.yaml')
+        # print("fname = %s" %fname)
+        # print("Generating XAI reports")
+        # generate_report('xparams.yaml')
         # run_whatif_explanation('xparams.yaml')
 
         
