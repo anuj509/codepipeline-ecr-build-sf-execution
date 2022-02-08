@@ -50,7 +50,7 @@ ENV PATH="/opt/program:${PATH}"
 # Set up the program in the image
 COPY decision_trees /opt/program
 WORKDIR /opt/program
-RUN mkdir reports
+RUN mkdir -p /opt/program/reports
 RUN chmod +x /opt/program/train
 RUN chmod +x /opt/program/serve
 
