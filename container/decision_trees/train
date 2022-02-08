@@ -110,7 +110,7 @@ def train():
         generate_report('xparams.yaml')
 
         src = "/opt/program/reports/reports.html"
-        dest = "/opt/ml/reports"
+        dest = "/opt/ml/reports/reports.html"
         shutil.copyfile(src, dest)
         print("File copied successfully.")
         fname = []
