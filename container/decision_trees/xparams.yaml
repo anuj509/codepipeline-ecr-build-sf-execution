@@ -15,7 +15,7 @@ estimators:
   models : /opt/ml/model/random-forest-model.pkl
   algorithm : "RandomForest"
   mode : 'classification'
-  class_names : ['setosa','versicolor','virginica']
+  class_names : ['setosa','versicolor']
 
 # REGRESSION
 # data_source:
