@@ -84,4 +84,4 @@ def transformation():
 
 @app.route('/reports',methods=['GET'])
 def xai_reports():
-    return current_app.send_static_file('reports.html')
+    return current_app.send_static_file('report.html')
