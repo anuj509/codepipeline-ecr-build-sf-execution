@@ -87,7 +87,7 @@ def train():
         print("done saving data split for XAI")
         print(os.getcwd())
         fname = []
-        for root,d_names,f_names in os.walk("reports"):
+        for root,d_names,f_names in os.walk(os.getcwd()):
             for f in f_names:
                 fname.append(os.path.join(root, f))
 
