@@ -52,8 +52,8 @@ target_class : 0
 #   class_names : ['Setosa', 'Versicolor', 'Virginica']
 
 reports:
-  global : ./reports/global
-  local : ./reports/local
+  global : /opt/ml/reports/global
+  local : /opt/ml/reports/local
 
 experiments:
   estimators_1:
