@@ -1,4 +1,4 @@
-## Bring-your-own Algorithm Sample
+# Bring-your-own Algorithm Sample
 
 This example shows how to package an algorithm for use with SageMaker. We have chosen a simple [scikit-learn][skl] implementation of decision trees to illustrate the procedure.
 

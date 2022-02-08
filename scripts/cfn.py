@@ -11,7 +11,7 @@ import boto3
 import botocore
 
 
-cf = boto3.client('cloudformation',region_name='us-east-1')  # pylint: disable=C0103
+cf = boto3.client('cloudformation',region_name='us-east-2')  # pylint: disable=C0103
 log = logging.getLogger('deploy.cf.create_or_update')  # pylint: disable=C0103
 
 
@@ -38,7 +38,7 @@ class Cloudformation(object):
                             'UPDATE_COMPLETE', 'UPDATE_ROLLBACK_IN_PROGRESS', 'UPDATE_ROLLBACK_FAILED',
                             'UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS', 'UPDATE_ROLLBACK_COMPLETE']
 
-    default_region = 'us-east-1'
+    default_region = 'us-east-2'
 
     def __init__(self, region=None):
         """
