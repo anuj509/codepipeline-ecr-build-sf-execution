@@ -37,6 +37,23 @@ param_path = os.path.join(prefix, 'input/config/hyperparameters.json')
 channel_name='training'
 training_path = os.path.join(input_path, channel_name)
 
+def recursive_overwrite(src, dest, ignore=None):
+    if os.path.isdir(src):
+        if not os.path.isdir(dest):
+            os.makedirs(dest)
+        files = os.listdir(src)
+        if ignore is not None:
+            ignored = ignore(src, files)
+        else:
+            ignored = set()
+        for f in files:
+            if f not in ignored:
+                recursive_overwrite(os.path.join(src, f), 
+                                    os.path.join(dest, f), 
+                                    ignore)
+    else:
+        shutil.copyfile(src, dest)
+
 # The function to execute the training.
 def train():
     print('Starting the training.',sklearn.__version__)
@@ -94,7 +111,7 @@ def train():
 
         src = "/opt/program/reports/reports.html"
         dest = "/opt/ml/reports"
-        shutil.copyfile(source, destination)
+        shutil.copyfile(src, dest)
         print("File copied successfully.")
         fname = []
         for root,d_names,f_names in os.walk("/opt/ml/reports"):
@@ -102,6 +119,10 @@ def train():
                 fname.append(os.path.join(root, f))
 
         print("fname = %s" %fname)
+
+        source = "/opt/ml/reports"
+        dst = "/opt/program/static/reports"
+        recursive_overwrite(source,dst)
         # run_whatif_explanation('xparams.yaml')
 
         
