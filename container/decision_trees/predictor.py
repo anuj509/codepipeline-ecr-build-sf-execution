@@ -12,7 +12,7 @@ import signal
 import traceback
 
 import flask
-
+from flask import current_app
 import pandas as pd
 
 prefix = '/opt/ml/'
@@ -81,3 +81,7 @@ def transformation():
     result = out.getvalue()
 
     return flask.Response(response=result, status=200, mimetype='text/csv')
+
+@app.route('/reports',methods=['GET'])
+def xai_reports():
+    return current_app.send_static_file('reports.html')
