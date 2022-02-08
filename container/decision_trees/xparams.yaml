@@ -12,7 +12,7 @@ data_source:
   y_test : /opt/ml/input/data/test_iris-y.csv
 
 estimators:
-  models : /opt/ml/model/decision-tree-model.pkl
+  models : /opt/ml/model/random-forest-model.pkl
   algorithm : "DecisionTreeClassifier"
   mode : 'classification'
   class_names : ['setosa','versicolor','virginica']
@@ -57,12 +57,12 @@ reports:
 
 experiments:
   estimators_1:
-    models : /opt/ml/model/decision-tree-model.pkl
+    models : /opt/ml/model/random-forest-model.pkl
     algorithm : "DecisionTreeClassifier"
     mode : 'classification'
     class_names : ['setosa','versicolor','virginica']
   estimators_2:
-    models : /opt/ml/model/decision-tree-model.pkl
+    models : /opt/ml/model/random-forest-model.pkl
     algorithm : "DecisionTreeClassifier"
     mode : 'classification'
     class_names : ['setosa','versicolor','virginica']
