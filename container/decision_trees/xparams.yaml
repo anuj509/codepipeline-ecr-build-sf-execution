@@ -55,17 +55,17 @@ reports:
   global : /opt/ml/reports/global
   local : /opt/ml/reports/local
 
-experiments:
-  estimators_1:
-    models : /opt/ml/model/random-forest-model.pkl
-    algorithm : "RandomForest"
-    mode : 'classification'
-    class_names : ['setosa','versicolor','virginica']
-  estimators_2:
-    models : /opt/ml/model/random-forest-model.pkl
-    algorithm : "RandomForest"
-    mode : 'classification'
-    class_names : ['setosa','versicolor','virginica']
+# experiments:
+#   estimators_1:
+#     models : /opt/ml/model/random-forest-model.pkl
+#     algorithm : "RandomForest"
+#     mode : 'classification'
+#     class_names : ['setosa','versicolor']
+#   estimators_2:
+#     models : /opt/ml/model/random-forest-model.pkl
+#     algorithm : "RandomForest"
+#     mode : 'classification'
+#     class_names : ['setosa','versicolor']
 
 graphs:
   permutation importance : True
