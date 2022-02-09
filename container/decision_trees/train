@@ -20,8 +20,8 @@ from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
-import untangleai # custom package
-from untangleai.generate_report import generate_report
+# import untangleai # custom package
+# from untangleai.generate_report import generate_report
 
 # These are the paths to where SageMaker mounts interesting things in your container.
 
@@ -94,35 +94,35 @@ def train():
             pickle.dump(clf, out)
         print('Training complete.')
 
-        print("saving data split for XAI")
+        # print("saving data split for XAI")
 
-        X.to_csv(os.path.join(input_path,"iris-x.csv"),index=False)
-        y.to_csv(os.path.join(input_path,"iris-y.csv"),index=False)
-        X_train.to_csv(os.path.join(input_path,"train_iris-x.csv"),index=False)
-        y_train.to_csv(os.path.join(input_path,"train_iris-y.csv"),index=False)
-        X_test.to_csv(os.path.join(input_path,"test_iris-x.csv"),index=False)
-        y_train.to_csv(os.path.join(input_path,"test_iris-y.csv"),index=False)
+        # X.to_csv(os.path.join(input_path,"football-x.csv"),index=False)
+        # y.to_csv(os.path.join(input_path,"football-y.csv"),index=False)
+        # X_train.to_csv(os.path.join(input_path,"train_football-x.csv"),index=False)
+        # y_train.to_csv(os.path.join(input_path,"train_football-y.csv"),index=False)
+        # X_test.to_csv(os.path.join(input_path,"test_football-x.csv"),index=False)
+        # y_train.to_csv(os.path.join(input_path,"test_football-y.csv"),index=False)
 
-        print("done saving data split for XAI")
-        print(os.getcwd())
+        # print("done saving data split for XAI")
+        # print(os.getcwd())
         
-        print("Generating XAI reports")
-        generate_report('xparams.yaml')
+        # print("Generating XAI reports")
+        # generate_report('xparams.yaml')
 
-        src = "/opt/program/reports/reports.html"
-        dest = "/opt/ml/reports/reports.html"
-        shutil.copyfile(src, dest)
-        print("File copied successfully.")
-        fname = []
-        for root,d_names,f_names in os.walk("/opt/ml/reports"):
-            for f in f_names:
-                fname.append(os.path.join(root, f))
+        # src = "/opt/program/reports/reports.html"
+        # dest = "/opt/ml/reports/reports.html"
+        # shutil.copyfile(src, dest)
+        # print("File copied successfully.")
+        # fname = []
+        # for root,d_names,f_names in os.walk("/opt/ml/reports"):
+        #     for f in f_names:
+        #         fname.append(os.path.join(root, f))
 
-        print("fname = %s" %fname)
+        # print("fname = %s" %fname)
 
-        source = "/opt/ml/reports"
-        dst = "/opt/program/static/reports"
-        recursive_overwrite(source,dst)
+        # source = "/opt/ml/reports"
+        # dst = "/opt/program/static/reports"
+        # recursive_overwrite(source,dst)
         # run_whatif_explanation('xparams.yaml')
 
         

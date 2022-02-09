@@ -29,15 +29,16 @@ RUN apt-get install -y python3-pip \
 COPY requirements_cloud.txt /opt/program/requirements.txt
 WORKDIR /opt/program
 
-RUN pip3 --no-cache-dir install -r requirements.txt
+# RUN pip3 --no-cache-dir install -r requirements.txt
+RUN pip3 --no-cache-dir install numpy==1.20.3 scipy==1.7.1 scikit-learn==1.0.1 pandas==1.0.5 Flask==2.0.2 gevent==20.9.0 gunicorn==20.1.0
 # wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && python3 get-pip.py && \
     
 
-RUN git clone https://github.com/anuj509/PDPbox.git && cd PDPbox && python3 setup.py install
+# RUN git clone https://github.com/anuj509/PDPbox.git && cd PDPbox && python3 setup.py install
 
-COPY lib/untangleai-0.1.21-py3-none-any.whl /opt/program/untangleai-0.1.21-py3-none-any.whl
-WORKDIR /opt/program
-RUN pip3 install untangleai-0.1.21-py3-none-any.whl
+# COPY lib/untangleai-0.1.21-py3-none-any.whl /opt/program/untangleai-0.1.21-py3-none-any.whl
+# WORKDIR /opt/program
+# RUN pip3 install untangleai-0.1.21-py3-none-any.whl
 # Set some environment variables. PYTHONUNBUFFERED keeps Python from buffering our standard
 # output stream, which means that logs can be delivered to the user quickly. PYTHONDONTWRITEBYTECODE
 # keeps Python from writing the .pyc files which are unnecessary in this case. We also update
@@ -50,7 +51,7 @@ ENV PATH="/opt/program:${PATH}"
 # Set up the program in the image
 COPY decision_trees /opt/program
 
-RUN mkdir -p /opt/ml/reports/global /opt/ml/reports/local
+# RUN mkdir -p /opt/ml/reports/global /opt/ml/reports/local
 
 WORKDIR /opt/program
 RUN chmod +x /opt/program/train

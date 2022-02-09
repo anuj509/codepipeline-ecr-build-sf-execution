@@ -4,18 +4,18 @@ base:
 
 # CLASSIFICATION
 data_source:
-  X : /opt/ml/input/data/iris-x.csv
-  y : /opt/ml/input/data/iris-y.csv
-  X_train : /opt/ml/input/data/train_iris-x.csv
-  y_train : /opt/ml/input/data/train_iris-y.csv
-  X_test :  /opt/ml/input/data/test_iris-x.csv
-  y_test : /opt/ml/input/data/test_iris-y.csv
+  X : /opt/ml/input/data/football-x.csv
+  y : /opt/ml/input/data/football-y.csv
+  X_train : /opt/ml/input/data/train_football-x.csv
+  y_train : /opt/ml/input/data/train_football-y.csv
+  X_test :  /opt/ml/input/data/test_football-x.csv
+  y_test : /opt/ml/input/data/test_football-y.csv
 
 estimators:
   models : /opt/ml/model/random-forest-model.pkl
   algorithm : "RandomForest"
   mode : 'classification'
-  class_names : ['setosa','versicolor']
+  class_names : ['Yes','No']
 
 # REGRESSION
 # data_source:
@@ -34,7 +34,7 @@ estimators:
 
 row_index_to_explain : [0,1,5,9] #List as well
 
-target_class : 0
+target_class : 20
 
 # MULTICLASS CLASSIFICATION
 # data_source:
