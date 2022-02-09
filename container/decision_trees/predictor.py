@@ -81,16 +81,16 @@ def transformation():
     print('Invoked with {} records'.format(data.shape[0]))
 
     # Do the prediction
-    MOM = []
+    # MOM = []
     predictions = ScoringService.predict(data)
-    for row in predictions:
-        if row==1:
-            MOM.append("Yes")
-        else:
-            MOM.append("No")
+    # for row in predictions:
+    #     if row==1:
+    #         MOM.append("Yes")
+    #     else:
+    #         MOM.append("No")
     # Convert from numpy back to CSV
     out = StringIO()
-    pd.DataFrame({'results':MOM}).to_csv(out, header=False, index=False)
+    pd.DataFrame({'results':predictions}).to_csv(out, header=False, index=False)
     result = out.getvalue()
 
     return flask.Response(response=result, status=200, mimetype='text/csv')
