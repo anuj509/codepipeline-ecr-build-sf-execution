@@ -67,28 +67,12 @@ def transformation():
         data = flask.request.data.decode('utf-8')
         s = StringIO(data)
         data = pd.read_csv(s, header=None)
-        columns = ['Goal Scored',
-        'Ball Possession %',
-        'Attempts',
-        'On-Target',
-        'Off-Target',
-        'Blocked',
-        'Corners',
-        'Offsides',
-        'Free Kicks',
-        'Saves',
-        'Pass Accuracy %',
-        'Passes',
-        'Distance Covered (Kms)',
-        'Fouls Committed',
-        'Yellow Card',
-        'Yellow & Red',
-        'Red',
-        'Goals in PSO']
+
         if(data.shape[0]>1):
             data.columns = data.iloc[0]
             data = data[1:]
-            feature_names = [i for i in data.columns if i in columns]
+            data = data.apply(pd.to_numeric, errors='ignore')
+            feature_names = [i for i in data.columns if data[i].dtype in [np.int64]]
             data = data[feature_names]
             data.columns = range(data.shape[1])
     else:
