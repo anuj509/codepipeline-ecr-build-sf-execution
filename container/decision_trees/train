@@ -13,7 +13,7 @@ import pickle
 import sys
 import traceback
 import shutil
-
+import numpy as np
 import pandas as pd
 import sklearn
 from sklearn import tree
@@ -72,9 +72,15 @@ def train():
         # raw_data = [ pd.read_csv(file) for file in input_files ]
         train_data = pd.read_csv(input_files[0]) #pd.concat(raw_data)
 
+        train_data['1st Goal'].fillna(np.mean(numpy['1st Goal']), inplace=True)
+        train_data.drop(['Own goals','Own goal Time'], axis=1, inplace=True)
+
         # labels are in the first column
-        y = train_data.iloc[:,0]
-        X = train_data.iloc[:,1:]
+        y = (train_data['Man of the Match'] == "Yes")  # Convert from string "Yes"/"No" to binary
+        feature_names = [i for i in train_data.columns if train_data[i].dtype in [np.int64]]
+        X = train_data[feature_names]
+        # y = train_data.iloc[:,0]
+        # X = train_data.iloc[:,1:]
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=42)
 
@@ -86,7 +92,8 @@ def train():
 
         # Now use scikit-learn's decision tree classifier to train the model.
         # clf = tree.DecisionTreeClassifier(max_leaf_nodes=max_leaf_nodes)
-        clf = RandomForestClassifier()
+        clf = RandomForestClassifier(n_estimators=100,
+                                  random_state=42,n_jobs=-1)
         clf = clf.fit(X_train, y_train)
 
         # save the model
