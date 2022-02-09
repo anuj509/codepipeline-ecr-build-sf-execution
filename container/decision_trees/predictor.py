@@ -14,6 +14,7 @@ import traceback
 import flask
 from flask import current_app
 import pandas as pd
+import numpy as np
 
 prefix = '/opt/ml/'
 model_path = os.path.join(prefix, 'model')
@@ -67,6 +68,8 @@ def transformation():
         s = StringIO(data)
         data = pd.read_csv(s, header=None)
         if(data.shape[0]>1):
+            feature_names = [i for i in data.columns if data[i].dtype in [np.int64]]
+            data = data[feature_names]
             data = data.iloc[1: , :]
     else:
         return flask.Response(response='This predictor only supports CSV data', status=415, mimetype='text/plain')
